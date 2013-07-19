@@ -1,0 +1,40 @@
+<h1>商业Web搜索与Learning to Rank</h1>
+
+<h2>Learning to Rank 应用历史与现状</h2>
+
+<p>Learning to rank以及相关技术在工业界的应用始于2000年左右。</p>
+
+<ul>
+<li>AltaVista(2002)首先使用Boosted Tree Regression构建了基于Learning to Rank的系统。该系统上线后，排名第一的网页点击率有明显提升。</li>
+<li>Yahoo(2004) 收购了AltaVista。以国际化推广和提升改善频率为目标，采用Active Learning，Large Scale Training Set Generation，Large Runtime Models等方法，进行特征研发模式的优化。</li>
+<li>微软的Bing使用了<a href="http://www.bing.com/community/site_blogs/b/search/archive/2009/06/01/user-needs-features-and-the-science-behind-bing.aspx">RankNet系统（2005）</a>来进行相关性排序。</li>
+<li>俄国搜索引擎Yandex（2009）宣称其使用的名为MatrtixNet的算法大幅提升了其搜索性能。该算法实际上是一种改进的Gredient Boosting Decision Tree方法）。</li>
+<li>但是Google在2008年时仍使用专家维护的排序模型，而不是Learning to Rank方法。具体原因下文详述。</li>
+</ul>
+
+
+<h2>Google 与 Learning to Rank</h2>
+
+<p>据Peter Norvig说（参见源于<a href="http://anand.typepad.com/datawocky/2008/05/are-human-experts-less-prone-to-catastrophic-errors-than-machine-learned-models.html">Are Machine-Learned Models Prone to Catastrophic Errors?</a>），Google的最好的机器学习模型已经与Google现在使用的手工优化的模型效果相当，在某些情况下效果更好。但是Google仍然未使用该模型，是基于两方面的考虑：</p>
+
+<ul>
+<li>制作现有模型的专家们认为他们能够建造比机器建立的模型做得更好的模型；</li>
+<li>Google的搜索团队担心在面临与训练数据有较大差异的搜索时，机器学习模型可能出现较差的结果。而人工建立的模型可能对此种问题不敏感。</li>
+</ul>
+
+
+<p>第二点是问题的关键所在。自然界的现象可以分为两种：</p>
+
+<ul>
+<li>Mediocristan, 符合钟形曲线（正态分布）的现象，如人的身高等。该类现象的未来是预测可以根据过去的观察（比如均值与方差）来做出。</li>
+<li>Extremistan, 不符合钟形曲线的现象，比如查询请求，股票市场，战争长度等。某些本类现象可以用幂律分布或者分形分布来描述。对此类现象，假设未来现象类似于过去是不合理的。</li>
+</ul>
+
+
+<p>当前的各种机器学习算法仅在Mediocristan现象中工作良好，但不能应对Extremistan现象。Learning to Rank 中的Precision，Recall以及RMSE等目标函数仅对Mediocristan的查询有效，对从未见过的新查询则无效。因此面临未见过的新查询时，机器学习算法便无法应对。</p>
+
+<h2>结语与点评</h2>
+
+<p>互联网上的信息日新月异。各种XX体，XX门，热门话语不断出现，这些查询可能从未出现在几天前所积累的训练数据中。利用训练数据训练的learning to rank 模型对于这种热门检索词可能会不知所措。</p>
+
+<p>Google 对Learning to Rank的选择考虑，实际表达了对机器学习方法论的疑虑。单纯的从数据中学习，如果不能与可靠的先验知识（比如Google专家人工建立的排序模型）与逻辑推理紧密结合起来，的确无法有效应对 Extremistan 现象。然而，当前机器学习架构与先验知识与推理很难相容。已有大牛们在做相关的研究，希望对此问题有所改观。</p>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>Scott Chacon</title>
+ <link href="http://schacon.github.com/atom.xml" rel="self"/>
+ <updated>2013-06-10T22:41:21+08:00</updated>
+ <id>http://schacon.github.com/</id>
+ <author>
+   <name>Scott Chacon</name>
+   <email>schacon@gmail.com</email>
+ </author>
+ 
+ 
+ <entry>
+   <title>商业web搜索与learning To Rank</title>
+   <link href="http://schacon.github.com//2013/06/10/%E5%95%86%E4%B8%9AWeb%E6%90%9C%E7%B4%A2%E4%B8%8ELearning-to-Rank.html"/>
+   <updated>2013-06-10T00:00:00+08:00</updated>
+   <id>http://schacon.github.com//2013/06/10/商业Web搜索与Learning-to-Rank</id>
+   <content type="html">&lt;h1&gt;商业Web搜索与Learning to Rank&lt;/h1&gt;
+
+&lt;h2&gt;Learning to Rank 应用历史与现状&lt;/h2&gt;
+
+&lt;p&gt;Learning to rank以及相关技术在工业界的应用始于2000年左右。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;AltaVista(2002)首先使用Boosted Tree Regression构建了基于Learning to Rank的系统。该系统上线后，排名第一的网页点击率有明显提升。&lt;/li&gt;
+&lt;li&gt;Yahoo(2004) 收购了AltaVista。以国际化推广和提升改善频率为目标，采用Active Learning，Large Scale Training Set Generation，Large Runtime Models等方法，进行特征研发模式的优化。&lt;/li&gt;
+&lt;li&gt;微软的Bing使用了&lt;a href=&quot;http://www.bing.com/community/site_blogs/b/search/archive/2009/06/01/user-needs-features-and-the-science-behind-bing.aspx&quot;&gt;RankNet系统（2005）&lt;/a&gt;来进行相关性排序。&lt;/li&gt;
+&lt;li&gt;俄国搜索引擎Yandex（2009）宣称其使用的名为MatrtixNet的算法大幅提升了其搜索性能。该算法实际上是一种改进的Gredient Boosting Decision Tree方法）。&lt;/li&gt;
+&lt;li&gt;但是Google在2008年时仍使用专家维护的排序模型，而不是Learning to Rank方法。具体原因下文详述。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h2&gt;Google 与 Learning to Rank&lt;/h2&gt;
+
+&lt;p&gt;据Peter Norvig说（参见源于&lt;a href=&quot;http://anand.typepad.com/datawocky/2008/05/are-human-experts-less-prone-to-catastrophic-errors-than-machine-learned-models.html&quot;&gt;Are Machine-Learned Models Prone to Catastrophic Errors?&lt;/a&gt;），Google的最好的机器学习模型已经与Google现在使用的手工优化的模型效果相当，在某些情况下效果更好。但是Google仍然未使用该模型，是基于两方面的考虑：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;制作现有模型的专家们认为他们能够建造比机器建立的模型做得更好的模型；&lt;/li&gt;
+&lt;li&gt;Google的搜索团队担心在面临与训练数据有较大差异的搜索时，机器学习模型可能出现较差的结果。而人工建立的模型可能对此种问题不敏感。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;第二点是问题的关键所在。自然界的现象可以分为两种：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mediocristan, 符合钟形曲线（正态分布）的现象，如人的身高等。该类现象的未来是预测可以根据过去的观察（比如均值与方差）来做出。&lt;/li&gt;
+&lt;li&gt;Extremistan, 不符合钟形曲线的现象，比如查询请求，股票市场，战争长度等。某些本类现象可以用幂律分布或者分形分布来描述。对此类现象，假设未来现象类似于过去是不合理的。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;当前的各种机器学习算法仅在Mediocristan现象中工作良好，但不能应对Extremistan现象。Learning to Rank 中的Precision，Recall以及RMSE等目标函数仅对Mediocristan的查询有效，对从未见过的新查询则无效。因此面临未见过的新查询时，机器学习算法便无法应对。&lt;/p&gt;
+
+&lt;h2&gt;结语与点评&lt;/h2&gt;
+
+&lt;p&gt;互联网上的信息日新月异。各种XX体，XX门，热门话语不断出现，这些查询可能从未出现在几天前所积累的训练数据中。利用训练数据训练的learning to rank 模型对于这种热门检索词可能会不知所措。&lt;/p&gt;
+
+&lt;p&gt;Google 对Learning to Rank的选择考虑，实际表达了对机器学习方法论的疑虑。单纯的从数据中学习，如果不能与可靠的先验知识（比如Google专家人工建立的排序模型）与逻辑推理紧密结合起来，的确无法有效应对 Extremistan 现象。然而，当前机器学习架构与先验知识与推理很难相容。已有大牛们在做相关的研究，希望对此问题有所改观。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Learning To Rank</title>
+   <link href="http://schacon.github.com//2013/06/10/Learning-to-Rank.html"/>
+   <updated>2013-06-10T00:00:00+08:00</updated>
+   <id>http://schacon.github.com//2013/06/10/Learning-to-Rank</id>
+   <content type="html">&lt;h1&gt;Learning to Rank基本思路初探&lt;/h1&gt;
+
+&lt;p&gt;既然是Learning，那么就必然要用到机器学习的理论和算法。可是，主要的机器学习算法，诸如SVM，DBN等，均是面向向量空间的算法。于是，如何将Ranking这个目标与机器学习算法对接起来，便成为Learning to Rank的最主要的研究方向。其他的研究，例如用boosting减小偏差，用bagging减小方差等等，都是在解决这个问题的基础上，机器学习算法在这个领域的应用。&lt;/p&gt;
+
+&lt;p&gt;在一般的Learning to Rank场景中，可用的信息包括query-document 对的特征，及其rank信息。Rank信息有三种形式：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;对于一个query，每个document与之相关性评分值（Rank Score）；&lt;/li&gt;
+&lt;li&gt;对于同一query，两document与之相关性偏好值（Preference）；&lt;/li&gt;
+&lt;li&gt;对于同一query，所有document与之相关性强弱的排列顺序（Rank List）。&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;这三种信息在一定程度上可以相互转化。&lt;/p&gt;
+
+&lt;p&gt;Learning to Rank 的最终目的，就是学习一个rank score 函数 f, 使得对每个query-document对（q,d），f(q,d)的值，或两两比较，或者排序得到的列表符合可用的信息。&lt;/p&gt;
+
+&lt;p&gt;下面总结一下对于这些形式的信息，Learning to Rank学界是如何用机器学习的方法进行处理的。&lt;/p&gt;
+
+&lt;h2&gt;从Rank Score中学习&lt;/h2&gt;
+
+&lt;p&gt;对于相关性评分形式的Ranking信息，具有机器学习背景的朋友容易想到，可以直接利用Regression等方法对rank score函数f进行学习。由于相关性评分值一般是分为几个固定的离散等级，因此也可以使用分类的方法进行学习。&lt;/p&gt;
+
+&lt;h2&gt;从Preference 中学习&lt;/h2&gt;
+
+&lt;p&gt;对于相关性比较对的Ranking信息，可以看成以一对query-document对的特征为输入，相关性强弱比较数据为输出，建立回归或者分类学习任务。各种算法在处理输入信息、输出信息以及采用的具体学习方法上各有特色。&lt;/p&gt;
+
+&lt;h3&gt;学习Rank Score 函数&lt;/h3&gt;
+
+&lt;p&gt;采用该途径的算法直接使用学习机器来估计 Rank Score 函数，而采用基于Preference的误差来训练学习机器，使之输出符合 Preference 的 Rank Score。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;RankNet: 输入：每个query-docuement 特征向量；目标函数：根据评分函数构造偏好概率，偏好概率与真实偏好的交叉熵；学习算法：神经网络；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;RankBoost: 输入：两个query-document特征向量；目标：评分函数差估计偏好函数的指数误差；学习算法：adaboost；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;GBRank: 输入：两个query-document特征向量；目标：评分函数差估计偏好函数的截半平方误差；学习算法：Gradient Boosting Tree；&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;h3&gt;直接学习 Preference 函数&lt;/h3&gt;
+
+&lt;p&gt;采用该途径的算法使用学习机器来估计 Preference 函数，因此其输入需要包含两个(q,d)对的信息。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;SortNet: 输入：两个query-document特征向量；目标函数：偏好函数与目标值的均方误差；学习算法：神经网络；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;RankingSVM: 输入：两个query-document特征向量的差值；目标函数：SVM估计偏好函数的误差；学习算法：SVM；&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;h2&gt;从排序列表中学习&lt;/h2&gt;
+
+&lt;p&gt;对于排序列表形式的Ranking信息，各种方法均学习一个Rank Score函数，使得函数输出最优化目标函数。关于目标函数的选择，则有两种主要的思路：&lt;/p&gt;
+
+&lt;h3&gt;优化MAP、NDCG等排序列表的目标函数&lt;/h3&gt;
+
+&lt;p&gt;优化目标函数是最为直接的想法。但是，由于Ranking 的目标函数，如Map，NDCG等都是不连续的函数，无法使用常用的基于梯度等信息的传统优化方法。对此问题，有三种解决方案：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;用能够较好拟合目标函数的光滑函数来替代目标函数。采用该思路的方法有Soft Rank等；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;优化目标函数的一个可处理的上界。采用该思路的方法有 SVM-map等；&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;采用类似Adaboost，GA等可处理非连续目标函数的优化方法，直接优化目标函数。采用该思路的方法有AdaRank等。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;h3&gt;优化Ranking List的概率模型&lt;/h3&gt;
+
+&lt;p&gt;该思路对Ranking List进行概率建模，并优化学习所得的Ranking List概率分布使之逼近已知的Ranking List概率分布。ListNet 与 ListMLE是采用该途径的两种方法。他们之间的区别在于ListNet采用交叉熵，而ListMLE则采用似然函数作为优化目标。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Gradientboostingmachine</title>
+   <link href="http://schacon.github.com//2013/06/10/GradientBoostingMachine.html"/>
+   <updated>2013-06-10T00:00:00+08:00</updated>
+   <id>http://schacon.github.com//2013/06/10/GradientBoostingMachine</id>
+   <content type="html">&lt;h1&gt;函数估计的Boosting框架&lt;/h1&gt;
+
+&lt;h2&gt;函数估计基础&lt;/h2&gt;
+
+&lt;h3&gt;目标&lt;/h3&gt;
+
+&lt;p&gt;函数估计，即从给定训练数据 x-&gt;y 和损失函数，来学习一个函数，使得 F(x) 能够最小化与y之间的损失。&lt;/p&gt;
+
+&lt;h3&gt;求解方法&lt;/h3&gt;
+
+&lt;p&gt;当学习函数空间确定之后，若学习函数由若干参数控制，则函数优化问题便转化为参数优化问题。&lt;/p&gt;
+
+&lt;p&gt;某些情况下，当学习函数与损失函数形式较为简单时，模型的最优解可以通过解析的方式求得。&lt;/p&gt;
+
+&lt;p&gt;但在一般情况下，逼近问题的解析解难以直接获得，需要使用数值优化算法，即在一个初始猜测基础上逐步修正，得到最终的最优参数。这样所得的&lt;strong&gt;最优解是初始猜测与后续逐步修正的和&lt;/strong&gt;。最常用的参数修正方法即是沿负梯度方向进行最速下降。&lt;/p&gt;
+
+&lt;h2&gt;Boosting函数估计&lt;/h2&gt;
+
+&lt;p&gt;一般情况下，对于复杂问题，很难直接获得非常契合问题领域的学习空间和参数化的学习模型。我们可以采用Boosting的方法，来逐步逼近问题的解。&lt;/p&gt;
+
+&lt;p&gt;Boosting方法一般采用加法模型。即每一步寻找一个新的基函数hi和加权系数wi，使得w*h0+… +whi的损失最小。这种策略称之为前向分阶段加法模型(Forward Stagewise Additive Modeling)。&lt;/p&gt;
+
+&lt;p&gt;对某些损失函数，比如指数损失函数，可以采用Adaboost等模型，将参数优化转化为样本加权来得到解决。&lt;/p&gt;
+
+&lt;p&gt;但对于复杂的损失函数（指数函数鲁棒性不佳），求得一个新的组件的最优参数可能并不容易。此时，可以借助数值优化的思路，不求一次性求得最优解，只求每次寻找到的组件均能给损失带来下降。这便是 Gradient Boosting Machine 的思路。&lt;/p&gt;
+
+&lt;p&gt;具体地说，Gradient Boosting Machine 在每一步估算损失函数对当前估计函数的负梯度方向，并对其拟合一个基函数h，使该函数尽可能与负梯度方向平行。然后，沿该函数方向进行线搜索以求得使损失函数取得最大下降的步长w。这样，一个新的Boosting组建w与h便学习得到了。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ 
+</feed>
